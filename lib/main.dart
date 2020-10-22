@@ -1,5 +1,9 @@
 import 'package:JrC_flutter_course/screens/categories_screen.dart';
+import 'package:JrC_flutter_course/screens/category_meals_screen.dart';
 import 'package:flutter/material.dart';
+
+import "package:JrC_flutter_course/dummy-data.dart";
+import 'models/meal.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +14,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Meal> _availableMeals = DUMMY_MEALS;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,6 +42,8 @@ class _MyAppState extends State<MyApp> {
         initialRoute: '/',
         routes: {
           '/': (ctx) => CategoriesScreen(),
+          CategoryMealsScreen.routeName: (ctx) =>
+              CategoryMealsScreen(_availableMeals),
         });
   }
 }
