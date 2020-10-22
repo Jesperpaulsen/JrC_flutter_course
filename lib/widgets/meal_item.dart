@@ -1,3 +1,4 @@
+import 'package:JrC_flutter_course/screens/meal_detail_screen.dart';
 import 'package:flutter/material.dart';
 import "package:JrC_flutter_course/models/meal.dart";
 
@@ -50,10 +51,19 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  void selectMeal(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: id)
+        .then((result) {
+      if (result != null) {}
+      // removeItem(result);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,

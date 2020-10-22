@@ -1,5 +1,6 @@
 import 'package:JrC_flutter_course/screens/categories_screen.dart';
 import 'package:JrC_flutter_course/screens/category_meals_screen.dart';
+import 'package:JrC_flutter_course/screens/meal_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import "package:JrC_flutter_course/dummy-data.dart";
@@ -44,6 +45,7 @@ class _MyAppState extends State<MyApp> {
           '/': (ctx) => CategoriesScreen(),
           CategoryMealsScreen.routeName: (ctx) =>
               CategoryMealsScreen(_availableMeals),
+          MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
         });
   }
 }
