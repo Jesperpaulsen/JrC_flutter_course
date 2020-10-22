@@ -1,8 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:JrC_flutter_course/models/meal.dart';
 import 'package:JrC_flutter_course/screens/categories_screen.dart';
 import 'package:JrC_flutter_course/screens/favorites_screen.dart';
+import 'package:flutter/material.dart';
 
 class TabsScreen extends StatefulWidget {
+  // Step 2
+  final List<Meal> favoriteMeals;
+
+  TabsScreen(this.favoriteMeals);
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -16,7 +22,11 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {'page': CategoriesScreen(), 'title': 'Categories'},
-      {'page': FavoritesScreen(), 'title': 'Your favorites'},
+      // Step 5
+      {
+        'page': FavoritesScreen(widget.favoriteMeals),
+        'title': 'Your favorites'
+      },
     ];
     super.initState();
   }

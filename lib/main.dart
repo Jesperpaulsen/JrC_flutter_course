@@ -1,10 +1,10 @@
+import "package:JrC_flutter_course/dummy-data.dart";
 import 'package:JrC_flutter_course/screens/categories_screen.dart';
 import 'package:JrC_flutter_course/screens/category_meals_screen.dart';
 import 'package:JrC_flutter_course/screens/meal_detail_screen.dart';
 import 'package:JrC_flutter_course/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
-import "package:JrC_flutter_course/dummy-data.dart";
 import 'models/meal.dart';
 
 void main() => runApp(MyApp());
@@ -17,6 +17,27 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Meal> _availableMeals = DUMMY_MEALS;
+  // Step 1
+  List<Meal> _favoritedMeals = [];
+
+  void _toggleFavorite(String mealId) {
+    final existingIndex =
+        _favoritedMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex >= 0) {
+      setState(() {
+        _favoritedMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        _favoritedMeals
+            .add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+
+  bool _isMealFavorite(String mealId) {
+    return _favoritedMeals.any((meal) => meal.id == mealId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +64,13 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => TabsScreen(),
+          // Step 6
+          '/': (ctx) => TabsScreen(_favoritedMeals),
           CategoryMealsScreen.routeName: (ctx) =>
               CategoryMealsScreen(_availableMeals),
-          MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+          // Step 7
+          MealDetailScreen.routeName: (ctx) =>
+              MealDetailScreen(_toggleFavorite, _isMealFavorite),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
