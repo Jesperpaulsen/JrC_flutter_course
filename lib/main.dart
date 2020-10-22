@@ -1,3 +1,4 @@
+import 'package:JrC_flutter_course/screens/categories_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
-          '/': (ctx) => HomeScreen(),
+          '/': (ctx) => CategoriesScreen(),
         });
   }
 }
