@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../dummy-data.dart';
 import '../widgets/category_item.dart';
 
+// Step 1
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class CategoriesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         children: DUMMY_CATEGORIES
             .map(
+              // Step 2
               (category) => CategoryItem(
                 category.id,
                 category.title,

@@ -7,6 +7,7 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.title, this.color);
 
+  // Step 3
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: '/',
         routes: {
+          // Step 4
           '/': (ctx) => CategoriesScreen(),
         });
   }
