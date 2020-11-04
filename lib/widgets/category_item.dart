@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import "package:JrC_flutter_course/screens/category_meals_screen.dart";
+import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
@@ -8,11 +8,13 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.title, this.color);
 
+  // Step 2
   void selectCategory(ctx) {
     Navigator.of(ctx).pushNamed(CategoryMealsScreen.routeName,
         arguments: {'id': id, 'title': title});
   }
 
+  // Step 1
   @override
   Widget build(BuildContext context) {
     return InkWell(
